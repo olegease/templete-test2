@@ -3,8 +3,8 @@ project( son8test VERSION 0.0.0 LANGUAGES CXX )
 
 set( SON8PROJ son8__${PROJECT_NAME} )
 
-set( testrepo REPO )
-set( testhash HASH )
+set( testrepo overglad )
+set( testhash main )
 
 add_subdirectory( source )
 
