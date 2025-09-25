@@ -3,27 +3,10 @@ description: 'Run CTest in the build directory'
 runs:
   using: "composite"
   steps:
-    - &unix_template
-      if: runner.os != 'Windows'
+    - name: Run CTest (Ubuntu/macOS)
+      # if: runner.os != 'Windows'
       shell: bash
-      
-    - &wins_template
-      if: runner.os == 'Windows'
-      shell: pwsh
-      
-    - <<: *unix_template
-      name: Run CTest
       run: ctest --test-dir build --output-on-failure
-      name: Run CTest 2
-      run: ctest --test-dir build
-
-    - <<: *wins_template
-      name: Run CTest
-      run: ctest --test-dir build --output-on-failure
-    #- name: Run CTest (Ubuntu/macOS)
-    #  if: runner.os != 'Windows'
-    #  shell: bash
-    #  run: ctest --test-dir build --output-on-failure
 
     #- name: Run CTest (Windows)
     #  if: runner.os == 'Windows'
